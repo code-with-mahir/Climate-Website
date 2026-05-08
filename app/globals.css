@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    color-scheme: dark;
+    --page-bg: #04070c;
+    --page-fg: #f7fafc;
+    --page-muted: #9fb0c3;
+    --panel: rgba(10, 17, 28, 0.72);
+    --panel-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background:
+        radial-gradient(circle at top, rgba(249, 115, 22, 0.16), transparent 30%),
+        linear-gradient(180deg, #04070c 0%, #07111a 40%, #04070c 100%);
+}
+
+body {
+    min-height: 100vh;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 72px 72px;
+    color: var(--page-fg);
+    font-family: var(--font-ibm-plex-sans), sans-serif;
+}
+
+::selection {
+    background: rgba(249, 115, 22, 0.35);
+    color: white;
+}
+
+.glass-panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.noise-mask {
+    position: relative;
+}
+
+.noise-mask::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(249, 115, 22, 0.18), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.15), transparent 24%);
+    pointer-events: none;
+}
+
+.heading-font {
+    font-family: var(--font-space-grotesk), sans-serif;
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.ticker-track {
+    animation: ticker-scroll 26s linear infinite;
+}
